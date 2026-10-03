@@ -1,0 +1,42 @@
+name: 试用反馈
+description: 记录实际使用结果、有效做法和遇到的卡点。
+title: "[反馈] "
+body:
+  - type: input
+    id: capability
+    attributes:
+      label: 使用的能力或组件
+      description: 填写能力名称和相关单元。
+    validations:
+      required: true
+  - type: input
+    id: revision
+    attributes:
+      label: 使用的版本或 commit
+      description: 填写 tag、commit 或获取日期；无法确认时请说明。
+    validations:
+      required: true
+  - type: textarea
+    id: usage
+    attributes:
+      label: 如何使用
+      description: 说明目标、环境、输入和具体操作。
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: 使用结果
+      description: 哪些目标已经达成？哪些结果与预期不同？成功和失败都可以记录。
+    validations:
+      required: true
+  - type: textarea
+    id: obstacle
+    attributes:
+      label: 卡点和建议
+      description: 哪一步难以理解或执行？如果没有卡点，可以留空。
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 相关证据
+      description: 可补充输出样例、日志或截图。提交前移除账号、Cookie、令牌和私人内容。

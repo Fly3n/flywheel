@@ -1,0 +1,50 @@
+name: 实际问题
+description: 报告已有能力在实际使用中出现的问题。
+title: "[问题] "
+body:
+  - type: input
+    id: capability
+    attributes:
+      label: 涉及的能力或组件
+      description: 填写能力名称和相关单元；例如 development 中的某个单元、wx-fetch。
+    validations:
+      required: true
+  - type: input
+    id: revision
+    attributes:
+      label: 使用的版本或 commit
+      description: 填写 tag、commit 或获取日期；无法确认时请说明。
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: 使用环境
+      description: 说明操作系统、AI 工具或运行方式，以及与问题有关的依赖版本。
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 复现步骤
+      description: 写出输入、操作和必要前提，让其他人能够重现问题。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 预期结果
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: 实际结果
+      description: 说明失败、错误输出或与预期不同的行为。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 相关证据
+      description: 可补充错误信息、日志、截图或最小样例。提交前移除账号、Cookie、令牌和私人内容。

@@ -1,0 +1,6 @@
+# 仅在 GitHub 生成发布说明时使用；此配置不创建 tag 或发布 Release。
+changelog:
+  categories:
+    - title: 其他变更
+      labels:
+        - '*'

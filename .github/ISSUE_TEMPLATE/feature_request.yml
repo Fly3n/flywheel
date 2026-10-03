@@ -1,0 +1,39 @@
+name: 新需求
+description: 提出新的使用场景或对已有能力的改进。
+title: "[需求] "
+body:
+  - type: input
+    id: capability
+    attributes:
+      label: 涉及的能力或组件
+      description: 填写已有能力名称；如果是新能力，请写“新增能力”并给出暂定名称。
+    validations:
+      required: true
+  - type: textarea
+    id: goal
+    attributes:
+      label: 要达成的目标
+      description: 说明当前要解决的问题，以及现有能力为什么不足。
+    validations:
+      required: true
+  - type: textarea
+    id: scenario
+    attributes:
+      label: 使用场景
+      description: 谁在什么环境下使用，输入是什么，希望得到什么结果？
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: 范围和边界
+      description: 说明需要支持的范围、必要限制，以及本次无需处理的内容。
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: 验收条件
+      description: 写出可以检查的成功条件；涉及行为时，用实际场景和结果描述。
+    validations:
+      required: true

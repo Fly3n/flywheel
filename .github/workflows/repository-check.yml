@@ -1,0 +1,40 @@
+# 检查仓库约束和检查器测试；能力行为与在线接口需单独验证。
+name: Repository check
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  repository-check:
+    name: Repository check (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        # 同时检查 Windows 和 Linux 上的路径与文件处理行为。
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+      - name: Check tracked repository files
+        run: python scripts/check_repository.py --tracked
+      - name: Test repository checks
+        # Python 3.11 can return success for zero tests; require actual cases.
+        run: >-
+          python -B -c "import sys, unittest; suite = unittest.defaultTestLoader.discover('tests'); print(f'{suite.countTestCases()} test cases discovered'); result = unittest.TextTestRunner(verbosity=2).run(suite); sys.exit(0 if suite.countTestCases() > 0 and result.wasSuccessful() else 1)"
